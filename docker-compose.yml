@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  auth-demo:
+    build: .
+    tty: true
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/auth-demo
+    env_file:
+      - environments/dev
+    links:
+      - auth-database
+
+  auth-database:
+    image: postgres
+    env_file:
+      - environments/dev
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:

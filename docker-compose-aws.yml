@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  auth:
+    image: 257884807961.dkr.ecr.us-west-2.amazonaws.com/auth:latest
+    tty: true
+    ports:
+      - "0:3000"
+    env_file:
+      - .env
